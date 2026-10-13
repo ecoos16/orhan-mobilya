@@ -1,5 +1,6 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#main-menu');
+const menuPanel = document.querySelector('#menu-panel');
 const mobileLayout = window.matchMedia('(max-width: 1000px)');
 const contactDetails = document.querySelector('.header-reach');
 document.addEventListener('click', event => {
@@ -17,17 +18,23 @@ contactDetails.addEventListener('click', event => {
 
 function closeMenu() {
   menuButton.setAttribute('aria-expanded', 'false');
-  navigation.classList.remove('is-open');
+  menuButton.setAttribute('aria-label', 'Menüyü aç');
+  menuPanel.classList.remove('is-open');
+  contactDetails.open = false;
 }
 
 menuButton.hidden = false;
 menuButton.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') !== 'true';
   menuButton.setAttribute('aria-expanded', String(open));
-  navigation.classList.toggle('is-open', open);
+  menuButton.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+  menuPanel.classList.toggle('is-open', open);
 });
-navigation.addEventListener('click', event => {
-  if (event.target.closest('a')) closeMenu();
+menuPanel.addEventListener('click', event => {
+  if (event.target.closest('a')) {
+    closeMenu();
+    if (mobileLayout.matches) menuButton.focus();
+  }
 });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
@@ -38,7 +45,11 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => {
   if (!event.target.closest('header')) closeMenu();
 });
-mobileLayout.addEventListener('change', closeMenu);
+mobileLayout.addEventListener('change', () => {
+  if (mobileLayout.matches && menuPanel.contains(document.activeElement)) menuButton.focus();
+  if (!mobileLayout.matches && document.activeElement === menuButton) navigation.querySelector('a').focus();
+  closeMenu();
+});
 
 const dialog = document.querySelector('#photo-dialog');
 const largePhoto = document.querySelector('#large-photo');
