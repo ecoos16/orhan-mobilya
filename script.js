@@ -53,10 +53,14 @@ mobileLayout.addEventListener('change', () => {
 
 const dialog = document.querySelector('#photo-dialog');
 const largePhoto = document.querySelector('#large-photo');
+if (dialog) {
 document.querySelectorAll('[data-photo]').forEach(button => {
   button.addEventListener('click', () => {
     largePhoto.src = button.dataset.photo;
     largePhoto.alt = button.dataset.title;
+    const thumbnail = button.querySelector('img');
+    largePhoto.width = Number(thumbnail.getAttribute('width'));
+    largePhoto.height = Number(thumbnail.getAttribute('height'));
     document.querySelector('#photo-title').textContent = button.dataset.title;
     dialog.showModal();
     document.body.classList.add('photo-open');
@@ -75,3 +79,51 @@ dialog.addEventListener('click', event => {
     if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
   }
 });
+}
+
+const heroGallery = document.querySelector('.hero-gallery');
+if (heroGallery) {
+  const track = heroGallery.querySelector('.hero-track');
+  const slides = [...track.querySelectorAll('.hero-slide')];
+  const dots = [...heroGallery.querySelectorAll('[data-slide]')];
+  const status = heroGallery.querySelector('[role="status"]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0;
+  let frame;
+
+  function updatePosition() {
+    const index = Math.max(0, Math.min(slides.length - 1, Math.round(track.scrollLeft / track.clientWidth)));
+    dots.forEach((dot, i) => {
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+    if (index !== current) status.textContent = slides[index].getAttribute('aria-label');
+    current = index;
+  }
+
+  function goTo(index) {
+    const next = (index + slides.length) % slides.length;
+    track.scrollTo({left: next * track.clientWidth, behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+  }
+
+  heroGallery.querySelector('.gallery-controls').hidden = false;
+  heroGallery.querySelectorAll('[data-direction]').forEach(button => {
+    button.addEventListener('click', () => goTo(current + Number(button.dataset.direction)));
+  });
+  dots.forEach(dot => dot.addEventListener('click', () => goTo(Number(dot.dataset.slide))));
+  track.addEventListener('keydown', event => {
+    const targets = {ArrowLeft: current - 1, ArrowRight: current + 1, Home: 0, End: slides.length - 1};
+    if (event.key in targets) {
+      event.preventDefault();
+      goTo(targets[event.key]);
+    }
+  });
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(updatePosition);
+  }, {passive: true});
+  new ResizeObserver(() => {
+    track.scrollTo({left: current * track.clientWidth, behavior: 'instant'});
+    updatePosition();
+  }).observe(track);
+}

@@ -1,0 +1,5 @@
+[build]
+  publish = "."
+  command = ""
+
+# Every route has its own directory/index.html. No SPA rewrite is needed.
