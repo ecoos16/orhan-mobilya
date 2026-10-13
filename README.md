@@ -35,11 +35,11 @@ Dosya ve bağlantı yolları `/assets/...`, `/style.css` ve `/script.js` biçimi
 
 ## Görseller ve etkileşimler
 
-Açılış galerisinde mutfak, gardırop, TV ünitesi ve portmanto fotoğrafları bulunur. Otomatik oynatma yoktur. Telefonda doğal kaydırma, önceki/sonraki düğmeleri, konum göstergeleri ve galerinin odağı üzerindeyken sağ/sol ok, Home ve End tuşları kullanılabilir. Görseller `object-fit: contain` ile kırpılmadan, sabit yükseklikte gösterilir. Hareketi azaltma tercihine uyulur.
+Açılış galerisinde mutfak, gardırop, TV ünitesi ve portmanto fotoğrafları bulunur. Otomatik oynatma yoktur. Kaydırma, oklar, göstergeler ve klavye desteği korunur. Fotoğraflar eski büyük fotoğraf alanını dengeli kırpmayla doldurur; kontroller fotoğraf üzerinde yer alır. Kartlar masaüstünde / tablette 5:4, telefonda 1:1 oranındadır. Tam fotoğraf hem ana sayfa hem uygulamalar sayfasında büyütme penceresinde açılır.
 
 İlk açılış fotoğrafı `loading="eager"` ve `fetchpriority="high"` kullanır. Diğer galeri fotoğrafları gecikmeli yüklenir. WebP kaynakları 320, 480, 640, 900 ve orijinal genişlik seçeneklerinden oluşur; gereksiz büyütme yapılmaz. Orijinal JPG dosyaları korunur ve uygulamalar sayfasındaki fotoğraf büyütmede kullanılır. Görsellere `width` / `height`, kartlara `aspect-ratio` ile yer ayrılır.
 
-Malzeme görsellerinin kaynak, izin, fotoğrafçı ve türev bilgileri [GORSEL-KAYNAKLARI.md](GORSEL-KAYNAKLARI.md) dosyasındadır. MDF fotoğrafı temsili olarak işaretlenmiştir; akrilik ve lake kartları uygun lisanslı fotoğraf doğrulanamadığı için tipografi kullanır.
+Ana sayfada beş tam bölüm eski sırayla bulunur; ayrı sayfalar korunur. Malzemeler iki yerde de eski fotoğrafsız üç kart düzenini kullanır. MDF fotoğrafı ve türevleri kaldırıldı. Önceki kaynak kaydı [GORSEL-KAYNAKLARI.md](GORSEL-KAYNAKLARI.md) dosyasında tarihçe olarak korunur.
 
 ## Dosyalar ve son kontrol
 

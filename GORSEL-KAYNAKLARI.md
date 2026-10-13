@@ -2,7 +2,9 @@
 
 Kontrol tarihi: 13 Ekim 2026. Bu dosya dış kaynaklardan alınan görsellerin kullanım durumunu ve mevcut proje fotoğraflarını ayrı olarak kaydeder.
 
-## MDF levha — kullanılan temsili fotoğraf
+## MDF levha — önceki sürümden kaldırılan fotoğraf
+
+MDF fotoğrafı ve üç WebP türevi kaldırıldı. Malzemeler bölümünde veya sayfasında fotoğraf ve temsili görsel sunumu yoktur. Aşağıdaki kayıt yalnızca önceki kullanımın kaynak / izin tarihçesidir; dosya yolları mevcut dosyaları belirtmez.
 
 - Eser: **Mdf platte.jpg**, MDF levha / kesit fotoğrafı.
 - Fotoğrafçı: **Joern Allmers** (German Wikipedia / Xnor). Fotoğrafın gösterdiği levhanın üreticisi kaynakta belirtilmiyor; Orhan Mobilya ürünü olarak sunulmuyor.
