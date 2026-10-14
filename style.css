@@ -20,9 +20,9 @@ dialog h2{overflow-wrap:anywhere}
 @media(max-width:1000px){
  header{height:auto;min-height:90px;flex-wrap:wrap;gap:12px;padding-top:16px;padding-bottom:16px}
  .brand{margin-right:auto}
- .menu-toggle:not([hidden]){display:block}
+ .js .menu-toggle{display:block}
  #main-menu{order:4;display:flex;flex-basis:100%;flex-wrap:wrap;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
- header:has(.menu-toggle:not([hidden])) #main-menu:not(.is-open){display:none}
+ .js header #main-menu:not(.is-open){display:none}
  #main-menu a{padding:12px 14px;min-height:44px;border:1px solid var(--line)}
  #main-menu a+a::before{display:none}
 }
@@ -67,11 +67,11 @@ footer{align-items:center;line-height:1.6}
 @media(max-width:1000px){
  header{min-height:76px;padding:14px 5%;gap:0 16px;align-items:center}
  .brand{flex-shrink:0}
- .menu-toggle:not([hidden]){display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:3px;background:transparent}
+ .js .menu-toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:0;border-radius:3px;background:transparent}
  .menu-toggle:hover,.menu-toggle[aria-expanded="true"]{background:#e5e9e3}
  #menu-panel{display:block;flex-basis:100%;min-width:0;margin-top:12px;padding:8px 0 0;border-top:1px solid var(--line)}
- header:has(.menu-toggle:not([hidden])) #menu-panel:not(.is-open){display:none}
- header:has(.menu-toggle:not([hidden])) #main-menu:not(.is-open),#main-menu{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;padding:0;border:0}
+ .js header #menu-panel:not(.is-open){display:none}
+ .js header #main-menu:not(.is-open),#main-menu{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;padding:0;border:0}
  #main-menu a{padding:12px 8px;border:0;border-radius:3px;font-size:14px;min-height:44px}
  #main-menu a:hover,#main-menu a:focus-visible{transform:none}
  .header-reach{display:block;margin-top:6px;padding-top:6px;border-top:1px solid var(--line)}

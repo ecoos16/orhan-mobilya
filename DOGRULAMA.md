@@ -1,5 +1,15 @@
 # Orhan Mobilya — ayrı sayfa yapısı kontrolleri
 
+## 14 Ekim 2026 — mobil ilk yükleme CLS düzeltmesi
+
+- Yerel Edge/Chromium başsız tarayıcıda önbellek kapatılarak, 375 / 390 / 412 × 823 px mobil görünümde, 2× DPR, 4× CPU yavaşlatması, 150 ms ağ gecikmesi ve 200.000 bayt/sn indirme sınırıyla ölçüldü. İlk çizimi JavaScript başlangıcından ayırmak için test sunucusunda `script.js` yanıtına ayrıca 1.800 ms, fotoğraflara 900 ms gecikme uygulandı. Bunlar yerel ölçümlerdir; yeni bir PageSpeed raporu değildir.
+- `PerformanceObserver` ile etkileşim dışı `layout-shift` olayları ve kareler boyunca header / main / galeri ölçüleri kaydedildi. Önceki sürümde üç genişlikte de **CLS 0,378693** oluştu: menü önce açık çiziliyor, ertelenmiş script düğmenin `hidden` niteliğini kaldırınca CSS menüyü kapatıyordu. Header **415 px → 73 px**, main başlangıcı **415 px → 73 px** değişiyordu. `main#main-content` tetikleyici değil, bu 342 px hareketten etkilenen öğeydi.
+- Altı sayfanın head bölümünde, stil dosyasından önce senkron olarak `js` sınıfı belirleniyor. Mobil menünün kapalı başlangıcı ve 44 × 44 px düğmesi artık ilk çizimde CSS tarafından kuruluyor; ertelenmiş script başlangıç yerleşimini değiştirmiyor. JavaScript kapalıyken sınıf eklenmiyor ve menü bağlantıları açık kalıyor. Ana içerik veya fotoğraflar gizlenmedi / geciktirilmedi.
+- Düzeltme sonrası aynı üç mobil soğuk yüklemede **CLS 0,000** ölçüldü; header ilk çizimden itibaren **73 px**, hero galeri **460 px** kaldı. İlk hero fotoğrafının HTML `width` / `height` değerleri ve CSS galeri ölçüleri zaten yükleme öncesinde alan ayırıyordu; bunların tasarımı değiştirilmedi. Harici web fontu veya font yüklenme olayı görülmedi; sistem fontları kullanılıyor.
+- Diğer beş sayfada 375 px mobil soğuk yüklemede CLS **0,000** ölçüldü; menüyü açma ve Escape ile kapatma geçti. JavaScript kapalıyken bağlantıların görünür kaldığı doğrulandı. 375 ve 1440 px'de görseller engellenmiş / tamamen yüklenmiş durumların galeri ve kart ölçüleri birebir eşleşti; önceki sürümün yüklenmiş tasarım geometrisi de korundu. 320, 390, 768 ve 1440 px'de galeri okları, göstergeleri, 44 × 44 px dokunma alanları, klavye odağı ve gezinmesi; mobilde dokunarak kaydırma ve kategori fotoğrafı açma kontrolleri geçti.
+
+## 13 Ekim 2026 kontrol kaydı
+
 Kontrol tarihi: 13 Ekim 2026. Eski görünümün geri getirilmesinden sonraki kontrollerdir. Yakınlaştırma ölçeği 1 (%100) olarak ayarlandı; beş genişliğin ekran görüntüleri incelendi. Canlı kontrol push sonrasında yapılır ve teslim özetinde bildirilir.
 
 ## Yerel tarayıcı kontrolleri

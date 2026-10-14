@@ -23,7 +23,6 @@ function closeMenu() {
   contactDetails.open = false;
 }
 
-menuButton.hidden = false;
 menuButton.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') !== 'true';
   menuButton.setAttribute('aria-expanded', String(open));
