@@ -21,7 +21,7 @@ Chrome başsız tarayıcıda `/`, `/hizmetler/`, `/uygulamalar/`, `/malzemeler/`
 - HTML'deki yerel bağlantılar, `src`, `srcset`, fotoğraf büyütme kaynakları, CSS / JavaScript, favicon, robots ve sitemap dâhil **52 benzersiz adres HTTP 200** döndürdü.
 - Telefon (`tel:+905327612215`), WhatsApp (`https://wa.me/905327612215`) ve mevcut Bursa Yıldırım adresini içeren Google Maps bağlantısı korundu. Gerçek arama veya mesaj gönderilmedi.
 - Önceden depoda bulunan **20 JPG dosyası** Git'teki sürümleriyle SHA-256 düzeyinde karşılaştırıldı ve değişmediği doğrulandı. Önceki WebP türevleri de korundu.
-- Sitemap'te altı adres bulunur. Canonical ve robots sitemap bağlantısı `https://orhan-mobilya-bursa.netlify.app` adresini kullanır.
+- Sitemap'te altı adres bulunur. Canonical ve robots sitemap bağlantısı `https://www.orhanmobilyabursa.com` adresini kullanır.
 - Netlify yapılandırması depo kökünü yayınlar; SPA fallback veya tüm yolları ana sayfaya yönlendiren kural yoktur.
 
 ## Gerçek arka planda kontrast

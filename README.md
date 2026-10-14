@@ -1,6 +1,6 @@
 # Orhan Mobilya
 
-HTML, CSS ve JavaScript ile hazırlanmış, altı gerçek HTML sayfasından oluşan statik site. Paket kurulumu veya derleme gerektirmez. Mevcut canlı adres: https://orhan-mobilya-bursa.netlify.app/
+HTML, CSS ve JavaScript ile hazırlanmış, altı gerçek HTML sayfasından oluşan statik site. Paket kurulumu veya derleme gerektirmez. Mevcut canlı adres: https://www.orhanmobilyabursa.com/
 
 | Adres | Dosya |
 | --- | --- |
